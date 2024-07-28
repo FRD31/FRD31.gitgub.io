@@ -90,6 +90,7 @@
             padding: 10px;
             cursor: pointer;
             border-radius: 5px;
+            margin: 10px; /* Espacio alrededor del botón */
         }
 
         /* Estilos para pantallas pequeñas */
@@ -99,8 +100,9 @@
                 flex-direction: column; /* Cambiar la dirección a columna */
                 width: 100%;
                 position: absolute; /* Posición absoluta */
-                top: 50px; /* Colocarlo debajo del botón */
+                top: 70px; /* Colocarlo debajo del botón */
                 left: 0;
+                background-color: #000; /* Fondo negro */
             }
 
             .menu-toggle {
@@ -114,6 +116,10 @@
             /* Ocultar las subopciones de los menús principales en móviles */
             .submenu {
                 display: none; /* Ocultar los submenús */
+                position: relative; /* Cambiar a posición relativa */
+                top: 0; /* Ajustar posición */
+                left: 0; /* Ajustar posición */
+                box-shadow: none; /* Eliminar sombra */
             }
 
             /* Mostrar los submenús al hacer clic en el elemento padre */
@@ -127,7 +133,7 @@
     <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button> <!-- Botón para móviles -->
     <ul class="menu" id="menu">
         <img class="logo" src="file:///F:/proyecto_final_5B/PROTOTIPE_Z/2.5.jpg" alt="Tu Logotipo">
-        <li><a href="#" onclick="toggleSubmenu(event)">Medicamentos</a>
+        <li><a href="#" onclick="toggleSubmenu(event, 'medicamentosSubmenu')">Medicamentos</a>
             <ul class="submenu" id="medicamentosSubmenu">
                 <li><a href="tos.html">Tos</a></li>
                 <li><a href="#">Gripa</a></li>
@@ -137,7 +143,7 @@
             </ul>
         </li>
         <li><a href="#">Sobre Nosotros</a></li>
-        <li><a href="#" onclick="toggleSubmenu(event)">Contactos</a>
+        <li><a href="#" onclick="toggleSubmenu(event, 'contactosSubmenu')">Contactos</a>
             <ul class="submenu" id="contactosSubmenu">
                 <li><a href="#">Información de Contacto</a></li>
                 <li><a href="#">Conócenos</a></li>
@@ -155,21 +161,6 @@
         &copy; 2024 Medical Nature. Todos los derechos reservados.
     </div>
     <script>
-        // JavaScript para mostrar u ocultar submenús al hacer clic
-        const menuItems = document.querySelectorAll('.menu li');
-
-        menuItems.forEach(item => {
-            item.addEventListener('mouseover', () => {
-                const submenu = item.querySelector('.submenu');
-                if (submenu) submenu.style.display = 'block';
-            });
-
-            item.addEventListener('mouseout', () => {
-                const submenu = item.querySelector('.submenu');
-                if (submenu) submenu.style.display = 'none';
-            });
-        });
-
         // Función para mostrar/ocultar el menú en móviles
         function toggleMenu() {
             const menu = document.getElementById('menu');
@@ -177,8 +168,9 @@
         }
 
         // Función para mostrar/ocultar los submenús en móviles
-        function toggleSubmenu(event) {
-            const submenu = event.target.nextElementSibling;
+        function toggleSubmenu(event, submenuId) {
+            event.preventDefault(); // Prevenir comportamiento predeterminado del enlace
+            const submenu = document.getElementById(submenuId);
             if (submenu) {
                 submenu.classList.toggle('show');
                 const menu = document.getElementById('menu');
