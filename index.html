@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>&copy; Medical Nature</title>
     <link rel="stylesheet" type="text/css" href="animacion.css">
     <link rel="icon" href="file:///F:/proyecto_final_5B/PROTOTIPE_Z/2.5.jpg">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         /* Estilos para el menú */
         .menu {
@@ -14,13 +15,14 @@
             padding: 0;
             display: flex;
             align-items: center; /* Alinea verticalmente los elementos del menú */
+            flex-wrap: wrap; /* Permite que los elementos se ajusten */
         }
 
         .logo {
             width: 50px; /* Ancho de tu logotipo */
             margin-right: 10px; /* Espacio entre el logotipo y los elementos del menú */
         }
-        
+
         .menu li {
             padding: 10px;
             position: relative;
@@ -63,6 +65,7 @@
         /* Estilo para todo el texto de la página */
         body {
             color: #FFD700; /* Texto color oro */
+            margin: 0; /* Eliminar márgenes */
         }
 
         /* Estilos para los enlaces */
@@ -70,18 +73,49 @@
             text-decoration: none; /* Elimina el subrayado predeterminado */
             color: #FFD700; /* Color oro para los enlaces */
         }
-        
+
         .footer {
             text-align: center;
             padding: 20px;
             font-size: 14px;
             color: #FFD700; /* Color oro */
         }
-        
+
+        /* Estilos para el botón de menú en móviles */
+        .menu-toggle {
+            display: none;
+            background-color: #FFD700;
+            color: #000;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Estilos para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .menu {
+                display: none; /* Ocultar el menú por defecto en móviles */
+                flex-direction: column; /* Cambiar la dirección a columna */
+                width: 100%;
+                position: absolute; /* Posición absoluta */
+                top: 50px; /* Colocarlo debajo del botón */
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block; /* Mostrar el botón de menú en móviles */
+            }
+
+            .menu.show {
+                display: flex; /* Mostrar el menú cuando se activa */
+            }
+        }
     </style>
 </head>
 <body bgcolor="black">
-    <ul class="menu">
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button> <!-- Botón para móviles -->
+    <ul class="menu" id="menu">
         <img class="logo" src="file:///F:/proyecto_final_5B/PROTOTIPE_Z/2.5.jpg" alt="Tu Logotipo">
         <li><a href="#">Medicamentos
             <ul class="submenu">
@@ -113,18 +147,24 @@
     <script>
         // JavaScript para mostrar u ocultar submenús al pasar el ratón
         const menuItems = document.querySelectorAll('.menu li');
-        
+
         menuItems.forEach(item => {
             item.addEventListener('mouseover', () => {
                 const submenu = item.querySelector('.submenu');
                 if (submenu) submenu.style.display = 'block';
             });
-            
+
             item.addEventListener('mouseout', () => {
                 const submenu = item.querySelector('.submenu');
                 if (submenu) submenu.style.display = 'none';
             });
         });
+
+        // Función para mostrar/ocultar el menú en móviles
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
     </script>
 </body>
 </html>
