@@ -110,6 +110,16 @@
             .menu.show {
                 display: flex; /* Mostrar el menú cuando se activa */
             }
+
+            /* Ocultar las subopciones de los menús principales en móviles */
+            .submenu {
+                display: none; /* Ocultar los submenús */
+            }
+
+            /* Mostrar los submenús al hacer clic en el elemento padre */
+            .submenu.show {
+                display: block; /* Mostrar el submenú cuando se activa */
+            }
         }
     </style>
 </head>
@@ -117,8 +127,8 @@
     <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button> <!-- Botón para móviles -->
     <ul class="menu" id="menu">
         <img class="logo" src="file:///F:/proyecto_final_5B/PROTOTIPE_Z/2.5.jpg" alt="Tu Logotipo">
-        <li><a href="#">Medicamentos
-            <ul class="submenu">
+        <li><a href="#" onclick="toggleSubmenu(event)">Medicamentos</a>
+            <ul class="submenu" id="medicamentosSubmenu">
                 <li><a href="tos.html">Tos</a></li>
                 <li><a href="#">Gripa</a></li>
                 <li><a href="#">Cabello</a></li>
@@ -127,8 +137,8 @@
             </ul>
         </li>
         <li><a href="#">Sobre Nosotros</a></li>
-        <li><a href="#">Contactos
-            <ul class="submenu">
+        <li><a href="#" onclick="toggleSubmenu(event)">Contactos</a>
+            <ul class="submenu" id="contactosSubmenu">
                 <li><a href="#">Información de Contacto</a></li>
                 <li><a href="#">Conócenos</a></li>
             </ul>
@@ -145,7 +155,7 @@
         &copy; 2024 Medical Nature. Todos los derechos reservados.
     </div>
     <script>
-        // JavaScript para mostrar u ocultar submenús al pasar el ratón
+        // JavaScript para mostrar u ocultar submenús al hacer clic
         const menuItems = document.querySelectorAll('.menu li');
 
         menuItems.forEach(item => {
@@ -164,6 +174,22 @@
         function toggleMenu() {
             const menu = document.getElementById('menu');
             menu.classList.toggle('show');
+        }
+
+        // Función para mostrar/ocultar los submenús en móviles
+        function toggleSubmenu(event) {
+            const submenu = event.target.nextElementSibling;
+            if (submenu) {
+                submenu.classList.toggle('show');
+                const menu = document.getElementById('menu');
+                // Ocultar otros submenús
+                const submenus = menu.querySelectorAll('.submenu');
+                submenus.forEach(s => {
+                    if (s !== submenu) {
+                        s.classList.remove('show');
+                    }
+                });
+            }
         }
     </script>
 </body>
