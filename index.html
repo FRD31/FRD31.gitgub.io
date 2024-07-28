@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>&copy; Medical Nature</title>
+    <link rel="stylesheet" type="text/css" href="animacion.css">
+    <link rel="icon" href="file:///F:/proyecto_final_5B/PROTOTIPE_Z/2.5.jpg">
+    <style>
+        /* Estilos para el menú */
+        .menu {
+            background-color: #000; /* Fondo negro */
+            color: #FFD700; /* Color oro */
+            list-style: none;
+            padding: 0;
+            display: flex;
+            align-items: center; /* Alinea verticalmente los elementos del menú */
+        }
+
+        .logo {
+            width: 50px; /* Ancho de tu logotipo */
+            margin-right: 10px; /* Espacio entre el logotipo y los elementos del menú */
+        }
+        
+        .menu li {
+            padding: 10px;
+            position: relative;
+        }
+
+        .menu li:hover .submenu {
+            display: block;
+        }
+
+        /* Estilos para el submenú */
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #000; /* Fondo negro */
+            list-style: none;
+            top: 100%;
+            left: 0;
+            width: 160px;
+            padding: 0;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.7); /* Efecto luminiscente */
+        }
+
+        .submenu li {
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Estilos adicionales */
+        .menu li:hover {
+            background-color: rgba(255, 215, 0, 0.5); /* Efecto luminiscente al pasar el ratón */
+            cursor: pointer;
+        }
+
+        /* Agregamos transiciones suaves para una apariencia más atractiva */
+        .menu li,
+        .submenu li {
+            transition: background-color 0.3s ease;
+        }
+
+        /* Estilo para todo el texto de la página */
+        body {
+            color: #FFD700; /* Texto color oro */
+        }
+
+        /* Estilos para los enlaces */
+        .menu a {
+            text-decoration: none; /* Elimina el subrayado predeterminado */
+            color: #FFD700; /* Color oro para los enlaces */
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #FFD700; /* Color oro */
+        }
+        
+    </style>
+</head>
+<body bgcolor="black">
+    <ul class="menu">
+        <img class="logo" src="file:///F:/proyecto_final_5B/PROTOTIPE_Z/2.5.jpg" alt="Tu Logotipo">
+        <li><a href="#">Medicamentos
+            <ul class="submenu">
+                <li><a href="tos.html">Tos</a></li>
+                <li><a href="#">Gripa</a></li>
+                <li><a href="#">Cabello</a></li>
+                <li><a href="#">Pomadas</a></li>
+                <li><a href="#">Cremas</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Sobre Nosotros</a></li>
+        <li><a href="#">Contactos
+            <ul class="submenu">
+                <li><a href="#">Información de Contacto</a></li>
+                <li><a href="#">Conócenos</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Más</a></li>
+    </ul>
+    <center>
+        <h1>Bienvenidos a Medical Nature</h1>
+        <p>Misión de Medical Nature: Proporcionar soluciones naturales y efectivas para el bienestar de nuestra comunidad.</p>
+        <p>Visión de Medical Nature: Ser el líder en medicina naturista, ofreciendo productos de alta calidad y promoviendo un estilo de vida saludable.</p>
+        <p>Eslogan: "Naturaleza y salud en perfecta armonía".</p>
+    </center>
+    <div class="footer">
+        &copy; 2024 Medical Nature. Todos los derechos reservados.
+    </div>
+    <script>
+        // JavaScript para mostrar u ocultar submenús al pasar el ratón
+        const menuItems = document.querySelectorAll('.menu li');
+        
+        menuItems.forEach(item => {
+            item.addEventListener('mouseover', () => {
+                const submenu = item.querySelector('.submenu');
+                if (submenu) submenu.style.display = 'block';
+            });
+            
+            item.addEventListener('mouseout', () => {
+                const submenu = item.querySelector('.submenu');
+                if (submenu) submenu.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
