@@ -184,5 +184,24 @@
             }
         }
     </script>
+     <script>
+        // Deshabilitar el clic derecho
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Deshabilitar atajos de teclado (F12 y Ctrl+Shift+I)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+                e.preventDefault();
+            }
+        });
+
+        // Mensaje de alerta sobre la propiedad intelectual
+        window.onload = function() {
+            alert("Este código es propiedad intelectual. No está permitido copiarlo.");
+        };
+    </script>
+
 </body>
 </html>
