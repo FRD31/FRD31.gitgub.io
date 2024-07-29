@@ -154,23 +154,6 @@
     <div class="footer">
         &copy; 2024 Medical Nature. Todos los derechos reservados.
     </div>
-  <?php
-// Comprobamos si la página se está accediendo mediante un intento de inspección
-$isInspected = isset($_GET['inspect']) ? true : false;
-
-// Si se está inspeccionando, muestra un mensaje aleatorio
-if ($isInspected) {
-    echo "<h1>Contenido Oculto</h1>";
-    echo "<p>Este contenido no está disponible para inspección.</p>";
-    exit;
-}
-?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Protección de Código PHP</title>
     <script>
         // Deshabilitar el clic derecho
         document.addEventListener('contextmenu', function(e) {
