@@ -158,8 +158,6 @@
         // Deshabilitar el clic derecho
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
-            // Redirigir a la misma página con el parámetro de inspección
-            window.location.href = window.location.href + "?inspect=true";
         });
 
         // Deshabilitar atajos de teclado (F12 y Ctrl+Shift+I)
@@ -168,11 +166,6 @@
                 e.preventDefault();
             }
         });
-
-        // Mensaje de alerta sobre la propiedad intelectual
-        window.onload = function() {
-            alert("Este código es propiedad intelectual. No está permitido copiarlo.");
-        };
     </script>
 </body>
 </html>
