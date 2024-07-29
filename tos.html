@@ -7,7 +7,7 @@
     <link rel="icon" href="icono.ico"> <!-- Cambia esto por la URL correcta del icono -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        /* Estilos para el menú */
+        /* Estilos para el cuerpo */
         body {
             background-color: #1a1a1a;
             color: #FFD700;
@@ -16,6 +16,7 @@
             line-height: 1.6;
         }
 
+        /* Estilos para el menú */
         .menu {
             background-color: rgba(0, 0, 0, 0.8);
             color: #FFD700;
@@ -71,6 +72,51 @@
             display: block;
         }
 
+        /* Estilos para el botón de menú en móviles */
+        .menu-toggle {
+            display: none;
+            background-color: #FFD700;
+            color: #000;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        /* Estilos para el menú en móviles */
+        @media (max-width: 768px) {
+            .menu {
+                flex-direction: column;
+                width: 250px;
+                position: fixed;
+                top: 70px;
+                left: -250px;
+                background-color: #000;
+                height: calc(100% - 70px);
+                transition: left 0.3s ease;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu.show {
+                left: 0;
+            }
+
+            .submenu {
+                display: none;
+                position: relative;
+                box-shadow: none;
+            }
+
+            .submenu.show {
+                display: block;
+            }
+        }
+
+        /* Estilos para el catálogo */
         .catalog {
             display: flex;
             flex-wrap: wrap;
@@ -110,13 +156,14 @@
     </style>
 </head>
 <body>
-    <ul class="menu">
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
+    <ul class="menu" id="menu">
         <img class="logo" src="https://us.123rf.com/450wm/dedeparsiadin/dedeparsiadin2104/dedeparsiadin210402669/168062516-dise%C3%B1o-de-ilustraci%C3%B3n-de-im%C3%A1genes-de-logotipo-de-medicina-natural.jpg?ver=6" alt="Tu Logotipo">
         <li>
             <a href="#">Medicamentos</a>
             <ul class="submenu">
-                <li><a href="tos.html">Tos</a></li>
-                <li><a href="gripe.html">Gripa</a></li>
+                <li><a href="#">Tos</a></li>
+                <li><a href="#">Gripa</a></li>
                 <li><a href="#">Cabello</a></li>
                 <li><a href="#">Pomadas</a></li>
                 <li><a href="#">Cremas</a></li>
@@ -157,6 +204,11 @@
         &copy; 2024 Medical Nature. Todos los derechos reservados.
     </div>
     <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+
         // Deshabilitar el clic derecho
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
@@ -171,4 +223,3 @@
     </script>
 </body>
 </html>
-
