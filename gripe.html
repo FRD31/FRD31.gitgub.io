@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicamentos para la Gripa - Medical Nature</title>
+    <link rel="stylesheet" type="text/css" href="animacion.css">
+    <link rel="icon" href="file:///F:/proyecto_final_5B/PROTOTIPE_Z/2.5.jpg">
+    <style>
+        /* Estilos para el menú */
+        .menu {
+            background-color: #000; /* Fondo negro */
+            color: #FFD700; /* Color oro */
+            list-style: none;
+            padding: 0;
+            display: flex;
+            align-items: center; /* Alinea verticalmente los elementos del menú */
+            flex-wrap: wrap; /* Permite que los elementos se ajusten */
+        }
+
+        .logo {
+            width: 50px; /* Ancho de tu logotipo */
+            margin-right: 10px; /* Espacio entre el logotipo y los elementos del menú */
+        }
+
+        .menu li {
+            padding: 10px;
+            position: relative;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .menu li:hover {
+            background-color: rgba(255, 215, 0, 0.5); /* Efecto luminiscente al pasar el ratón */
+            cursor: pointer;
+            transform: scale(1.05); /* Aumenta el tamaño ligeramente */
+        }
+
+        .menu li:hover .submenu {
+            display: block;
+        }
+
+        /* Estilos para el submenú */
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #000; /* Fondo negro */
+            list-style: none;
+            top: 100%;
+            left: 0;
+            width: 160px;
+            padding: 0;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.7); /* Efecto luminiscente */
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .submenu li {
+            padding: 10px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .submenu li:hover {
+            background-color: rgba(255, 215, 0, 0.5); /* Efecto luminiscente al pasar el ratón */
+        }
+
+        /* Estilo para todo el texto de la página */
+        body {
+            color: #FFD700; /* Texto color oro */
+            margin: 0; /* Eliminar márgenes */
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilos para los enlaces */
+        .menu a {
+            text-decoration: none; /* Elimina el subrayado predeterminado */
+            color: #FFD700; /* Color oro para los enlaces */
+            transition: color 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: #FFF700; /* Cambia a un tono más claro al pasar el ratón */
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #FFD700; /* Color oro */
+        }
+
+        /* Estilos para el botón de menú en móviles */
+        .menu-toggle {
+            display: none;
+            background-color: #FFD700;
+            color: #000;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px; /* Espacio alrededor del botón */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background-color: #FFF700; /* Cambia a un tono más claro al pasar el ratón */
+            transform: scale(1.1); /* Aumenta el tamaño ligeramente */
+        }
+
+        /* Estilos para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .menu {
+                display: none; /* Ocultar el menú por defecto en móviles */
+                flex-direction: column; /* Cambiar la dirección a columna */
+                width: 100%;
+                position: absolute; /* Posición absoluta */
+                top: 70px; /* Colocarlo debajo del botón */
+                left: 0;
+                background-color: #000; /* Fondo negro */
+                animation: slideIn 0.3s ease-in-out;
+            }
+
+            @keyframes slideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .menu-toggle {
+                display: block; /* Mostrar el botón de menú en móviles */
+            }
+
+            .menu.show {
+                display: flex; /* Mostrar el menú cuando se activa */
+            }
+
+            /* Ocultar las subopciones de los menús principales en móviles */
+            .submenu {
+                display: none; /* Ocultar los submenús */
+                position: relative; /* Cambiar a posición relativa */
+                top: 0; /* Ajustar posición */
+                left: 0; /* Ajustar posición */
+                box-shadow: none; /* Eliminar sombra */
+            }
+
+            /* Mostrar los submenús al hacer clic en el elemento padre */
+            .submenu.show {
+                display: block; /* Mostrar el submenú cuando se activa */
+            }
+        }
+
+        /* Estilos adicionales para la sección de medicamentos */
+        .medicamentos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .medicamento {
+            background-color: #222;
+            border: 1px solid #FFD700;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .medicamento:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+        }
+
+        .medicamento img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        .medicamento h3 {
+            margin: 10px 0;
+            color: #FFD700;
+        }
+
+        .medicamento p {
+            color: #FFF;
+        }
+
+        .medicamento .precio {
+            font-size: 18px;
+            color: #FFD700;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body bgcolor="black">
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button> <!-- Botón para móviles -->
+    <ul class="menu" id="menu">
+        <img class="logo" src="file:///F:/proyecto_final_5B/PROTOTIPE_Z/2.5.jpg" alt="Tu Logotipo">
+        <li><a href="#" onclick="toggleSubmenu(event, 'medicamentosSubmenu')">Medicamentos</a>
+            <ul class="submenu" id="medicamentosSubmenu">
+                <li><a href="tos.html">Tos</a></li>
+                <li><a href="gripa.html">Gripa</a></li>
+                <li><a href="#">Cabello</a></li>
+                <li><a href="#">Pomadas</a></li>
+                <li><a href="#">Cremas</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Sobre Nosotros</a></li>
+        <li><a href="#" onclick="toggleSubmenu(event, 'contactosSubmenu')">Contactos</a>
+            <ul class="submenu" id="contactosSubmenu">
+                <li><a href="#">Información de Contacto</a></li>
+                <li><a href="#">Conócenos</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Más</a></li>
+    </ul>
+
+    <center>
+        <h1>Medicamentos para la Gripa</h1>
+    </center>
+
+    <div class="medicamentos-container">
+        <div class="medicamento">
+            <img src="path/to/image1.jpg" alt="Medicamento 1">
+            <h3>Medicamento 1</h3>
+            <p>Descripción breve del medicamento para la gripe.</p>
+            <p class="precio">$10.00</p>
+        </div>
+        <div class="medicamento">
+            <img src="path/to/image2.jpg" alt="Medicamento 2">
+            <h3>Medicamento 2</h3>
+            <p>Descripción breve del medicamento para la gripe.</p>
+            <p class="precio">$12.00</p>
+        </div>
+        <div class="medicamento">
+            <img src="path/to/image3.jpg" alt="Medicamento 3">
+            <h3>Medicamento 3</h3>
+            <p>Descripción breve del medicamento para la gripe.</p>
+            <p class="precio">$15.00</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2024 Medical Nature. Todos los derechos reservados.
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+            } else {
+                menu.classList.add('show');
+            }
+        }
+
+        function toggleSubmenu(event, submenuId) {
+            event.preventDefault();
+            var submenu = document.getElementById(submenuId);
+            if (submenu.classList.contains('show')) {
+                submenu.classList.remove('show');
+            } else {
+                submenu.classList.add('show');
+            }
+        }
+
+        // JavaScript para mostrar u ocultar submenús al pasar el ratón (para pantallas grandes)
+        const menuItems = document.querySelectorAll('.menu li');
+
+        menuItems.forEach(item => {
+            item.addEventListener('mouseover', () => {
+                const submenu = item.querySelector('.submenu');
+                if (submenu && window.innerWidth > 768) submenu.style.display = 'block';
+            });
+
+            item.addEventListener('mouseout', () => {
+                const submenu = item.querySelector('.submenu');
+                if (submenu && window.innerWidth > 768) submenu.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
