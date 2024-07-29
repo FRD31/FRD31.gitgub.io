@@ -154,16 +154,42 @@
     <div class="footer">
         &copy; 2024 Medical Nature. Todos los derechos reservados.
     </div>
-    <script>
-    // Código original
-const mensaje = "Este es un mensaje secreto.";
-console.log(mensaje);
+  <?php
+// Comprobamos si la página se está accediendo mediante un intento de inspección
+$isInspected = isset($_GET['inspect']) ? true : false;
 
-// Código ofuscado
-(function() {
-    const _0x12b3 = ["log", "Este es un mensaje secreto."];
-    console[_0x12b3[0]](_0x12b3[1]);
-})();
-</script>
+// Si se está inspeccionando, muestra un mensaje aleatorio
+if ($isInspected) {
+    echo "<h1>Contenido Oculto</h1>";
+    echo "<p>Este contenido no está disponible para inspección.</p>";
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Protección de Código PHP</title>
+    <script>
+        // Deshabilitar el clic derecho
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            // Redirigir a la misma página con el parámetro de inspección
+            window.location.href = window.location.href + "?inspect=true";
+        });
+
+        // Deshabilitar atajos de teclado (F12 y Ctrl+Shift+I)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+                e.preventDefault();
+            }
+        });
+
+        // Mensaje de alerta sobre la propiedad intelectual
+        window.onload = function() {
+            alert("Este código es propiedad intelectual. No está permitido copiarlo.");
+        };
+    </script>
 </body>
 </html>
