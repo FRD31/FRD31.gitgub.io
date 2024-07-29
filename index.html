@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>&copy; Medical Nature</title>
-    <link rel="stylesheet" type="text/css" href="animacion.css">
-    <link rel="icon" href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Fvector-premium%2Flogo-naturaleza-medicina-tradicional_4927227.htm&psig=AOvVaw0kfBRJz7L0kgsxbLyZO_Lk&ust=1722291226840000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKC34_jgyocDFQAAAAAdAAAAABAE">
+    <link rel="stylesheet" type="text/css" href="animacion.css"> <!-- Asegúrate de que este archivo CSS esté minificado -->
+    <link rel="icon" href="icono.ico"> <!-- Cambia esto a un icono optimizado -->
     <style>
         /* Estilos para el menú */
         .menu {
-            background-color: #000; /* Fondo negro */
-            color: #FFD700; /* Color oro */
+            background-color: #000;
+            color: #FFD700;
             list-style: none;
             padding: 0;
             display: flex;
-            align-items: center; /* Alinea verticalmente los elementos del menú */
-            flex-wrap: wrap; /* Permite que los elementos se ajusten */
+            align-items: center;
+            flex-wrap: wrap;
+            transition: max-height 0.3s ease; /* Suaviza la apertura/cierre del menú */
         }
 
         .logo {
-            width: 50px; /* Ancho de tu logotipo */
-            margin-right: 10px; /* Espacio entre el logotipo y los elementos del menú */
+            width: 50px;
+            margin-right: 10px;
         }
 
         .menu li {
@@ -28,21 +29,16 @@
             position: relative;
         }
 
-        .menu li:hover .submenu {
-            display: block;
-        }
-
-        /* Estilos para el submenú */
         .submenu {
             display: none;
             position: absolute;
-            background-color: #000; /* Fondo negro */
+            background-color: #000;
             list-style: none;
             top: 100%;
             left: 0;
             width: 160px;
             padding: 0;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.7); /* Efecto luminiscente */
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
         }
 
         .submenu li {
@@ -50,38 +46,32 @@
             text-align: center;
         }
 
-        /* Estilos adicionales */
+        .menu li:hover .submenu {
+            display: block;
+        }
+
         .menu li:hover {
-            background-color: rgba(255, 215, 0, 0.5); /* Efecto luminiscente al pasar el ratón */
+            background-color: rgba(255, 215, 0, 0.5);
             cursor: pointer;
         }
 
-        /* Agregamos transiciones suaves para una apariencia más atractiva */
-        .menu li,
-        .submenu li {
-            transition: background-color 0.3s ease;
-        }
-
-        /* Estilo para todo el texto de la página */
         body {
-            color: #FFD700; /* Texto color oro */
-            margin: 0; /* Eliminar márgenes */
+            color: #FFD700;
+            margin: 0;
         }
 
-        /* Estilos para los enlaces */
         .menu a {
-            text-decoration: none; /* Elimina el subrayado predeterminado */
-            color: #FFD700; /* Color oro para los enlaces */
+            text-decoration: none;
+            color: #FFD700;
         }
 
         .footer {
             text-align: center;
             padding: 20px;
             font-size: 14px;
-            color: #FFD700; /* Color oro */
+            color: #FFD700;
         }
 
-        /* Estilos para el botón de menú en móviles */
         .menu-toggle {
             display: none;
             background-color: #FFD700;
@@ -90,47 +80,44 @@
             padding: 10px;
             cursor: pointer;
             border-radius: 5px;
-            margin: 10px; /* Espacio alrededor del botón */
+            margin: 10px;
         }
 
-        /* Estilos para pantallas pequeñas */
         @media (max-width: 768px) {
             .menu {
-                display: none; /* Ocultar el menú por defecto en móviles */
-                flex-direction: column; /* Cambiar la dirección a columna */
+                display: none;
+                flex-direction: column;
                 width: 100%;
-                position: absolute; /* Posición absoluta */
-                top: 70px; /* Colocarlo debajo del botón */
+                position: absolute;
+                top: 70px;
                 left: 0;
-                background-color: #000; /* Fondo negro */
+                background-color: #000;
             }
 
             .menu-toggle {
-                display: block; /* Mostrar el botón de menú en móviles */
+                display: block;
             }
 
             .menu.show {
-                display: flex; /* Mostrar el menú cuando se activa */
+                display: flex;
             }
 
-            /* Ocultar las subopciones de los menús principales en móviles */
             .submenu {
-                display: none; /* Ocultar los submenús */
-                position: relative; /* Cambiar a posición relativa */
-                top: 0; /* Ajustar posición */
-                left: 0; /* Ajustar posición */
-                box-shadow: none; /* Eliminar sombra */
+                display: none;
+                position: relative;
+                top: 0;
+                left: 0;
+                box-shadow: none;
             }
 
-            /* Mostrar los submenús al hacer clic en el elemento padre */
             .submenu.show {
-                display: block; /* Mostrar el submenú cuando se activa */
+                display: block;
             }
         }
     </style>
 </head>
 <body bgcolor="black">
-    <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button> <!-- Botón para móviles -->
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
     <ul class="menu" id="menu">
         <img class="logo" src="https://us.123rf.com/450wm/dedeparsiadin/dedeparsiadin2104/dedeparsiadin210402669/168062516-dise%C3%B1o-de-ilustraci%C3%B3n-de-im%C3%A1genes-de-logotipo-de-medicina-natural.jpg?ver=6" alt="Tu Logotipo">
         <li><a href="#" onclick="toggleSubmenu(event, 'medicamentosSubmenu')">Medicamentos</a>
@@ -161,20 +148,17 @@
         &copy; 2024 Medical Nature. Todos los derechos reservados.
     </div>
     <script>
-        // Función para mostrar/ocultar el menú en móviles
         function toggleMenu() {
             const menu = document.getElementById('menu');
             menu.classList.toggle('show');
         }
 
-        // Función para mostrar/ocultar los submenús en móviles
         function toggleSubmenu(event, submenuId) {
-            event.preventDefault(); // Prevenir comportamiento predeterminado del enlace
+            event.preventDefault();
             const submenu = document.getElementById(submenuId);
             if (submenu) {
                 submenu.classList.toggle('show');
                 const menu = document.getElementById('menu');
-                // Ocultar otros submenús
                 const submenus = menu.querySelectorAll('.submenu');
                 submenus.forEach(s => {
                     if (s !== submenu) {
@@ -183,8 +167,7 @@
                 });
             }
         }
-    </script>
-     <script>
+
         // Deshabilitar el clic derecho
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
@@ -197,11 +180,10 @@
             }
         });
 
-        // Mensaje de alerta sobre la propiedad intelectual
+        // Evitar el uso de alert en el cargador
         window.onload = function() {
-            alert("Este código es propiedad intelectual. No está permitido copiarlo.");
+            //alert("Este código es propiedad intelectual. No está permitido copiarlo.");
         };
     </script>
-
 </body>
 </html>
