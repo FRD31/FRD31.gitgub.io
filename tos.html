@@ -28,7 +28,7 @@
             list-style: none;
             padding: 0;
             display: flex;
-            flex-direction: column; /* Colocar elementos en columna */
+            flex-direction: column; /* Colocar elementos en columna para móviles */
             max-height: 70vh; /* Altura máxima para el menú */
             overflow-y: auto; /* Habilitar desplazamiento vertical */
             border-bottom: 3px solid #FFD700;
@@ -65,12 +65,15 @@
         .submenu {
             display: none; /* Ocultar submenú por defecto */
             background-color: rgba(0, 0, 0, 0.9);
-            position: relative; /* Mantener el submenú dentro de su contenedor */
+            position: absolute; /* Mantener el submenú dentro de su contenedor */
             list-style: none;
             padding: 0;
             margin: 0; /* Eliminar margenes para evitar desplazamientos */
             border-radius: 5px;
             z-index: 10; /* Asegurar que el submenú esté por encima de otros elementos */
+            left: 0; /* Alinear el submenú con el botón principal */
+            top: 100%; /* Mostrar el submenú debajo del botón principal */
+            width: 100%; /* Hacer el submenú del mismo ancho que el botón principal */
         }
 
         .submenu li {
@@ -97,6 +100,27 @@
 
             .submenu.show {
                 display: block; /* Mostrar submenú cuando sea necesario */
+            }
+        }
+
+        /* Estilos para pantallas más grandes */
+        @media (min-width: 769px) {
+            .menu {
+                position: static; /* Permitir que el menú esté en el flujo del documento */
+                flex-direction: row; /* Mostrar elementos en fila */
+                max-height: none; /* Sin límite de altura */
+                background-color: transparent; /* Fondo transparente en escritorio */
+            }
+
+            .submenu {
+                display: none; /* Ocultar submenú por defecto */
+                position: absolute; /* Posicionar el submenú correctamente */
+                left: 0; /* Alinear el submenú con el botón principal */
+                top: 100%; /* Mostrar el submenú debajo del botón principal */
+            }
+
+            .menu li:hover .submenu {
+                display: block; /* Mostrar el submenú al pasar el mouse */
             }
         }
 
@@ -143,7 +167,7 @@
     <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
     <div class="menu-container">
         <ul class="menu" id="menu">
-            <img class="logo" src="https://us.123rf.com/450wm/dedeparsiadin/dedeparsiadin2104/dedeparsiadin210402669/168062516-dise%C3%B1o-de-ilustraci%C3%B3n-de-im%C3%A1genes-de-logotipo-de-medicina-natural.jpg?ver=6" alt="Tu Logotipo">
+            <img class="logo" src="https://us.123rf.com/450wm/dedeparsiadin/dedeparsiadin2104/dedeparsiadin210402669/168062516-dise%C3%B1o-de-ilustraci%C3%B3n-de-im%C3%A1genes-de-logotipo-de-medicina-natural.jpg" alt="Tu Logotipo">
             <li>
                 <a href="#" onclick="toggleSubmenu(event, 'medicamentosSubmenu')">Medicamentos</a>
                 <ul class="submenu" id="medicamentosSubmenu">
