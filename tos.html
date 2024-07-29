@@ -2,12 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Medicamentos para la Tos - Medical Nature</title>
-    <link rel="stylesheet" type="text/css" href="animacion.css">
-    <link rel="icon" href="icono.ico"> <!-- Cambia esto por la URL correcta del icono -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="file:///F:/proyecto_final_5B/PROTOTIPE_Z/icono.ico">
     <style>
-        /* Estilos para el cuerpo */
         body {
             background-color: #1a1a1a;
             color: #FFD700;
@@ -17,72 +15,72 @@
         }
 
         /* Estilos para el menú */
-        .menu-container {
-            position: relative;
-            z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
-        }
-
         .menu {
             background-color: rgba(0, 0, 0, 0.8);
             color: #FFD700;
             list-style: none;
             padding: 0;
             display: flex;
-            flex-direction: column; /* Colocar elementos en columna para móviles */
-            max-height: 70vh; /* Altura máxima para el menú */
-            overflow-y: auto; /* Habilitar desplazamiento vertical */
-            border-bottom: 3px solid #FFD700;
-            position: fixed; /* Fijar el menú en la parte superior */
-            top: 0; /* Alinear con la parte superior */
-            width: 250px; /* Ancho del menú */
-            left: -250px; /* Ocultar fuera de la vista */
-            transition: left 0.3s ease; /* Transición suave al mostrar el menú */
+            align-items: center;
+            justify-content: space-between; 
+            position: relative; 
+            border-bottom: 3px solid #FFD700; 
         }
 
         .logo {
             width: 50px;
-            margin: 10px; /* Margen alrededor del logo */
+            margin-right: 10px;
         }
 
         .menu li {
-            padding: 10px;
             position: relative;
         }
 
         .menu a {
-            text-decoration: none;
+            display: inline-block;
+            padding: 10px 15px; 
+            background-color: transparent; 
             color: #FFD700;
-            padding: 10px 15px;
-            transition: background-color 0.3s ease;
-            border-radius: 5px;
-            display: block; /* Asegura que el enlace ocupe todo el espacio del menú */
+            text-decoration: none; 
+            border-radius: 5px; 
+            transition: background-color 0.3s ease; 
+            margin: 0 5px; 
         }
 
         .menu a:hover {
-            background-color: rgba(255, 215, 0, 0.3);
+            background-color: rgba(255, 215, 0, 0.3); 
         }
 
         .submenu {
-            display: none; /* Ocultar submenú por defecto */
+            display: none;
+            position: absolute; 
             background-color: rgba(0, 0, 0, 0.9);
-            position: absolute; /* Mantener el submenú dentro de su contenedor */
             list-style: none;
             padding: 0;
-            margin: 0; /* Eliminar margenes para evitar desplazamientos */
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
             border-radius: 5px;
-            z-index: 10; /* Asegurar que el submenú esté por encima de otros elementos */
-            left: 0; /* Alinear el submenú con el botón principal */
-            top: 100%; /* Mostrar el submenú debajo del botón principal */
-            width: 100%; /* Hacer el submenú del mismo ancho que el botón principal */
         }
 
         .submenu li {
             padding: 10px;
         }
 
+        .submenu li a {
+            display: block; 
+            background-color: transparent; 
+            color: #FFD700; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            transition: background-color 0.3s ease; 
+        }
+
+        .submenu li a:hover {
+            background-color: rgba(255, 215, 0, 0.2); 
+        }
+
         /* Estilos para el botón de menú en móviles */
         .menu-toggle {
-            display: block; /* Mostrar botón en móviles */
+            display: none;
             background-color: #FFD700;
             color: #000;
             border: none;
@@ -92,35 +90,47 @@
             margin: 10px;
         }
 
-        /* Estilos para el menú en móviles */
         @media (max-width: 768px) {
-            .menu.show {
-                left: 0; /* Mostrar el menú */
-            }
-
-            .submenu.show {
-                display: block; /* Mostrar submenú cuando sea necesario */
-            }
-        }
-
-        /* Estilos para pantallas más grandes */
-        @media (min-width: 769px) {
             .menu {
-                position: static; /* Permitir que el menú esté en el flujo del documento */
-                flex-direction: row; /* Mostrar elementos en fila */
-                max-height: none; /* Sin límite de altura */
-                background-color: transparent; /* Fondo transparente en escritorio */
+                flex-direction: column;
+                width: 250px; 
+                position: fixed;
+                top: 70px;
+                left: -250px; 
+                background-color: #000;
+                height: calc(100% - 70px); 
+                transition: left 0.3s ease; 
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu.show {
+                left: 0; 
             }
 
             .submenu {
-                display: none; /* Ocultar submenú por defecto */
-                position: absolute; /* Posicionar el submenú correctamente */
-                left: 0; /* Alinear el submenú con el botón principal */
-                top: 100%; /* Mostrar el submenú debajo del botón principal */
+                display: none; 
+                position: relative; 
+                box-shadow: none;
+            }
+
+            .submenu.show {
+                display: block; 
+            }
+        }
+
+        @media (min-width: 769px) {
+            .submenu {
+                display: none;
+                position: absolute;
+                left: 0;
+                top: 100%;
             }
 
             .menu li:hover .submenu {
-                display: block; /* Mostrar el submenú al pasar el mouse */
+                display: block; 
             }
         }
 
@@ -133,20 +143,14 @@
         }
 
         .catalog-item {
-            background-color: #333;
-            color: #FFD700;
+            background-color: #333; 
+            color: #FFD700; 
             border: 1px solid #FFD700;
             margin: 10px;
             padding: 20px;
             width: 200px;
             text-align: center;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
-            border-radius: 5px; /* Bordes redondeados */
-            transition: transform 0.3s ease; /* Efecto al pasar el mouse */
-        }
-
-        .catalog-item:hover {
-            transform: scale(1.05); /* Escalar al pasar el mouse */
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.7); 
         }
 
         .catalog-item img {
@@ -155,40 +159,43 @@
             margin-bottom: 10px;
         }
 
+        .catalog-item h3 {
+            margin-bottom: 10px;
+        }
+
         .footer {
             text-align: center;
             padding: 20px;
             font-size: 14px;
-            color: #FFD700;
+            color: #FFD700; 
         }
+        
     </style>
 </head>
 <body>
     <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
-    <div class="menu-container">
-        <ul class="menu" id="menu">
-            <img class="logo" src="https://us.123rf.com/450wm/dedeparsiadin/dedeparsiadin2104/dedeparsiadin210402669/168062516-dise%C3%B1o-de-ilustraci%C3%B3n-de-im%C3%A1genes-de-logotipo-de-medicina-natural.jpg" alt="Tu Logotipo">
-            <li>
-                <a href="#" onclick="toggleSubmenu(event, 'medicamentosSubmenu')">Medicamentos</a>
-                <ul class="submenu" id="medicamentosSubmenu">
-                    <li><a href="#">Tos</a></li>
-                    <li><a href="#">Gripa</a></li>
-                    <li><a href="#">Cabello</a></li>
-                    <li><a href="#">Pomadas</a></li>
-                    <li><a href="#">Cremas</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Sobre Nosotros</a></li>
-            <li>
-                <a href="#" onclick="toggleSubmenu(event, 'contactosSubmenu')">Contactos</a>
-                <ul class="submenu" id="contactosSubmenu">
-                    <li><a href="#">Información de Contacto</a></li>
-                    <li><a href="#">Conócenos</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Más</a></li>
-        </ul>
-    </div>
+    <ul class="menu" id="menu">
+        <img class="logo" src="https://us.123rf.com/450wm/dedeparsiadin/dedeparsiadin2104/dedeparsiadin210402669/168062516-dise%C3%B1o-de-ilustraci%C3%B3n-de-im%C3%A1genes-de-logotipo-de-medicina-natural.jpg?ver=6" alt="Tu Logotipo">
+        <li>
+            <a href="#" onclick="toggleSubmenu(event, 'medicamentosSubmenu')">Medicamentos</a>
+            <ul class="submenu" id="medicamentosSubmenu">
+                <li><a href="tos.html">Tos</a></li>
+                <li><a href="gripe.html">Gripa</a></li>
+                <li><a href="#">Cabello</a></li>
+                <li><a href="#">Pomadas</a></li>
+                <li><a href="#">Cremas</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Sobre Nosotros</a></li>
+        <li>
+            <a href="#" onclick="toggleSubmenu(event, 'contactosSubmenu')">Contactos</a>
+            <ul class="submenu" id="contactosSubmenu">
+                <li><a href="#">Información de Contacto</a></li>
+                <li><a href="#">Conócenos</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Más</a></li>
+    </ul>
     <center>
         <h1>Catálogo de Medicamentos para la Tos</h1>
         <div class="catalog">
