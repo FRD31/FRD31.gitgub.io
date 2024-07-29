@@ -4,19 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>&copy; Medical Nature</title>
-    <link rel="stylesheet" type="text/css" href="animacion.css"> <!-- Asegúrate de que este archivo CSS esté minificado -->
-    <link rel="icon" href="icono.ico"> <!-- Cambia esto a un icono optimizado -->
+    <link rel="icon" href="icono.ico">
     <style>
+        body {
+            background-color: #1a1a1a;
+            color: #FFD700;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
         /* Estilos para el menú */
         .menu {
-            background-color: #000;
+            background-color: rgba(0, 0, 0, 0.8);
             color: #FFD700;
             list-style: none;
             padding: 0;
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
-            transition: max-height 0.3s ease; /* Suaviza la apertura/cierre del menú */
+            justify-content: space-between; 
+            position: relative; 
+            border-bottom: 3px solid #FFD700; 
         }
 
         .logo {
@@ -25,53 +33,52 @@
         }
 
         .menu li {
-            padding: 10px;
             position: relative;
+        }
+
+        .menu a {
+            display: inline-block;
+            padding: 10px 15px; /* Espaciado de los botones */
+            background-color: transparent; /* Fondo transparente por defecto */
+            color: #FFD700;
+            text-decoration: none; /* Quitar subrayado */
+            border-radius: 5px; /* Bordes redondeados */
+            transition: background-color 0.3s ease; /* Efecto al pasar el mouse */
+            margin: 0 5px; /* Espacio entre botones */
+        }
+
+        .menu a:hover {
+            background-color: rgba(255, 215, 0, 0.3); /* Color de fondo al pasar el mouse */
         }
 
         .submenu {
             display: none;
-            position: absolute;
-            background-color: #000;
+            position: relative; /* Cambia a 'relative' para que se muestre dentro del elemento padre */
+            background-color: rgba(0, 0, 0, 0.9);
             list-style: none;
-            top: 100%;
-            left: 0;
-            width: 160px;
             padding: 0;
             box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+            border-radius: 5px;
         }
 
         .submenu li {
             padding: 10px;
-            text-align: center;
         }
 
-        .menu li:hover .submenu {
-            display: block;
+        .submenu li a {
+            display: block; /* Hace que el enlace ocupe todo el espacio */
+            background-color: transparent; /* Fondo transparente por defecto */
+            color: #FFD700; /* Color del texto */
+            text-decoration: none; /* Quitar subrayado */
+            border-radius: 5px; /* Bordes redondeados */
+            transition: background-color 0.3s ease; /* Efecto al pasar el mouse */
         }
 
-        .menu li:hover {
-            background-color: rgba(255, 215, 0, 0.5);
-            cursor: pointer;
+        .submenu li a:hover {
+            background-color: rgba(255, 215, 0, 0.2); /* Color de fondo al pasar el mouse */
         }
 
-        body {
-            color: #FFD700;
-            margin: 0;
-        }
-
-        .menu a {
-            text-decoration: none;
-            color: #FFD700;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            color: #FFD700;
-        }
-
+        /* Estilos para el botón de menú en móviles */
         .menu-toggle {
             display: none;
             background-color: #FFD700;
@@ -85,13 +92,14 @@
 
         @media (max-width: 768px) {
             .menu {
-                display: none;
                 flex-direction: column;
-                width: 100%;
-                position: absolute;
+                width: 250px; 
+                position: fixed;
                 top: 70px;
-                left: 0;
+                left: -250px; 
                 background-color: #000;
+                height: calc(100% - 70px); 
+                transition: left 0.3s ease; 
             }
 
             .menu-toggle {
@@ -99,28 +107,47 @@
             }
 
             .menu.show {
-                display: flex;
+                left: 0; 
             }
 
             .submenu {
-                display: none;
-                position: relative;
-                top: 0;
-                left: 0;
+                display: none; 
+                position: relative; /* Cambiado para mostrar el submenu dentro del menú */
                 box-shadow: none;
             }
 
             .submenu.show {
-                display: block;
+                display: block; /* Asegúrate de que se muestre el submenu al tener la clase 'show' */
             }
+        }
+
+        @media (min-width: 769px) {
+            .submenu {
+                display: none;
+                position: absolute;
+                left: 0;
+                top: 100%;
+            }
+
+            .menu li:hover .submenu {
+                display: block; 
+            }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #FFD700;
         }
     </style>
 </head>
-<body bgcolor="black">
+<body>
     <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
     <ul class="menu" id="menu">
         <img class="logo" src="https://us.123rf.com/450wm/dedeparsiadin/dedeparsiadin2104/dedeparsiadin210402669/168062516-dise%C3%B1o-de-ilustraci%C3%B3n-de-im%C3%A1genes-de-logotipo-de-medicina-natural.jpg?ver=6" alt="Tu Logotipo">
-        <li><a href="#" onclick="toggleSubmenu(event, 'medicamentosSubmenu')">Medicamentos</a>
+        <li>
+            <a href="#" onclick="toggleSubmenu(event, 'medicamentosSubmenu')">Medicamentos</a>
             <ul class="submenu" id="medicamentosSubmenu">
                 <li><a href="tos.html">Tos</a></li>
                 <li><a href="gripe.html">Gripa</a></li>
@@ -130,7 +157,8 @@
             </ul>
         </li>
         <li><a href="#">Sobre Nosotros</a></li>
-        <li><a href="#" onclick="toggleSubmenu(event, 'contactosSubmenu')">Contactos</a>
+        <li>
+            <a href="#" onclick="toggleSubmenu(event, 'contactosSubmenu')">Contactos</a>
             <ul class="submenu" id="contactosSubmenu">
                 <li><a href="#">Información de Contacto</a></li>
                 <li><a href="#">Conócenos</a></li>
